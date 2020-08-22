@@ -1,7 +1,7 @@
 {
-	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-	"env": { "browser": true },
-	"parser": "@typescript-eslint/parser",
-	"plugins": ["@typescript-eslint/eslint-plugin"],
-	"root": true
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "env": { "browser": true },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "root": true
 }
