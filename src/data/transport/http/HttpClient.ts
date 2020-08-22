@@ -1,5 +1,12 @@
 import { HttpMethod } from "./HttpMethod";
 
+export type RequestParams = {
+  url: string;
+  method: HttpMethod;
+  body: Record<string, any>;
+  headers: Record<string, any>;
+};
+
 export interface HttpClient {
-  request(url: string, method: HttpMethod, body: any, headers: any): void;
+  request(params: RequestParams): void;
 }
