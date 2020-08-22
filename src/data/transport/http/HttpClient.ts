@@ -8,5 +8,5 @@ export type RequestParams = {
 };
 
 export interface HttpClient {
-  request(params: RequestParams): void;
+  request<R>(params: RequestParams): Promise<R>;
 }
