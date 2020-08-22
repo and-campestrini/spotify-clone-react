@@ -3,5 +3,8 @@
   "env": { "browser": true },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint/eslint-plugin"],
-  "root": true
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }
