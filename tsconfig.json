@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "lib": ["DOM"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "paths": {
+      "@/": ["*"]
+    },
+    "rootDir": "src",
+    "strict": true,
+    "target": "ES6"
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}
