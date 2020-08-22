@@ -1,0 +1,7 @@
+{
+  "name": "spotify-clone-react",
+  "version": "0.0.1",
+  "description": "Spotify clone using React and Spotify Web Api",
+  "repository": "git@github.com:and-campestrini/spotify-clone-react.git",
+  "license": "AGPL-3.0-or-later"
+}
