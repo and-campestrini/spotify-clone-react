@@ -17,7 +17,10 @@ export class App {
   }
 
   private renderUi(): void {
-    render(<Main />, document.getElementById("app"));
+    render(
+      <Main dependencyContainer={container} />,
+      document.getElementById("app")
+    );
   }
 
   private registerDi(): void {
