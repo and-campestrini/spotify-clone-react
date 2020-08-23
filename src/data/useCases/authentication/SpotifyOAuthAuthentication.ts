@@ -1,3 +1,4 @@
+import { injectable, inject } from "tsyringe";
 import { User } from "@/domain/models/User";
 import { OAuthProvider } from "@/data/services/oauth";
 import {
@@ -5,8 +6,11 @@ import {
   AuthenticationParams,
 } from "@/domain/useCases/Authentication";
 
+@injectable()
 export class SpotifyOAuthAuthentication implements Authentication {
-  constructor(private spotifyOAuthProvider: OAuthProvider) {}
+  constructor(
+    @inject("OAuthProvider") private spotifyOAuthProvider: OAuthProvider
+  ) {}
 
   async authenticate({ code }: AuthenticationParams): Promise<User> {
     if (code) {

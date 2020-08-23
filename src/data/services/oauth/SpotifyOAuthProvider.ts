@@ -1,10 +1,12 @@
+import { injectable, inject } from "tsyringe";
 import { User } from "@/domain/models/User";
 import { OAuthProvider } from "@/data/services/oauth";
 import { SpotifyUserProfileResponse } from "@/data/models/SpotifyUserProfileResponse";
 import { HttpClient, HttpMethod } from "@/data/transport/http";
 
+@injectable()
 export class SpotifyOAuthProvider implements OAuthProvider {
-  constructor(private httpClient: HttpClient) {}
+  constructor(@inject("HttpClient") private httpClient: HttpClient) {}
 
   async exchangeTokenForUserInfo(accessToken: string): Promise<User> {
     const user = await this.httpClient.request<SpotifyUserProfileResponse>({
