@@ -1,7 +1,7 @@
 import fetchMock from "jest-fetch-mock";
 import faker from "faker";
 import { HttpMethod, HttpStatus, RequestParams } from "@/data/transport/http";
-import { FetchHttpClient } from "./FetchHttpClient";
+import { FetchHttpClient } from "@/infrastructure/transport/http";
 
 const mockHttpMethod = (): HttpMethod =>
   faker.random.objectElement(Object.keys(HttpMethod)) as HttpMethod;
