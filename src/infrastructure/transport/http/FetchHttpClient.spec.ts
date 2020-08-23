@@ -1,6 +1,6 @@
 import fetchMock from "jest-fetch-mock";
 import faker from "faker";
-import { HttpMethod, RequestParams } from "@/data/transport/http";
+import { HttpMethod, HttpStatus, RequestParams } from "@/data/transport/http";
 import { FetchHttpClient } from "./FetchHttpClient";
 
 const mockHttpMethod = (): HttpMethod =>
@@ -63,13 +63,40 @@ describe("FetchHttpClient", () => {
       const body = {
         param: faker.random.alphaNumeric(),
       };
-      params = { ...params, body };
+      params = { ...params, method: HttpMethod.POST, body };
 
       await systemUnderTest.request(params);
 
       expect(fetchMock.mock.calls[0][1]).toEqual(
         expect.objectContaining({ body })
       );
+    });
+  });
+
+  describe("error cases", () => {
+    it("should throw exception for rejected promise", async () => {
+      fetchMock.mockReject(new Error("Aborted!"));
+
+      await expect(
+        systemUnderTest.request({
+          url: faker.internet.url(),
+          method: mockHttpMethod(),
+        })
+      ).rejects.toThrow();
+    });
+
+    it("should throw an exception for bad status", async () => {
+      fetchMock.mockResponse(
+        JSON.stringify({ badData: faker.random.alphaNumeric() }),
+        { status: HttpStatus.FORBIDDEN }
+      );
+
+      await expect(
+        systemUnderTest.request({
+          url: faker.internet.url(),
+          method: mockHttpMethod(),
+        })
+      ).rejects.toThrow();
     });
   });
 });
