@@ -1,16 +1,26 @@
 {
   "plugins": [
-    "babel-plugin-transform-typescript-metadata",
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-decorators",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
     [
       "module-resolver",
       {
         "alias": {
-          "@/": "./src"
+          "@": "./src"
         }
       }
-    ]
+    ],
+    "babel-plugin-transform-typescript-metadata"
   ],
   "presets": [
     "@babel/preset-typescript",
@@ -18,10 +28,9 @@
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "browserslist": "> 0.25%, not dead",
-          "useBuiltIns": "usage"
-        }
+        "targets": "> 0.25%, not dead",
+        "useBuiltIns": "usage",
+        "corejs": 3
       }
     ]
   ]
