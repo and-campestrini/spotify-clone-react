@@ -7,6 +7,7 @@ import { SpotifyOAuthProvider } from "@/data/services/oauth";
 
 import { DefaultAppConfig } from "@/infrastructure/config/DefaultAppConfig";
 import { FetchHttpClient } from "@/infrastructure/transport/http";
+import { SessionStorageAdapter } from "@/infrastructure/cache";
 
 import { Main } from "@/presentation/Main";
 
@@ -38,6 +39,10 @@ export class App {
 
     container.register("HttpClient", {
       useClass: FetchHttpClient,
+    });
+
+    container.register("SessionStorage", {
+      useClass: SessionStorageAdapter,
     });
   }
 }
