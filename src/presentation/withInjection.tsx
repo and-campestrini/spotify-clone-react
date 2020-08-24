@@ -1,5 +1,6 @@
 import React from "react";
-import { DependencyInjectionContext, State } from "@/presentation/context";
+import { DependencyContainer } from "tsyringe";
+import { DependencyInjectionContext } from "@/presentation/context";
 
 type ResolutionConfig = {
   [prop: string]: string;
@@ -18,7 +19,7 @@ export function withInjection<T, K>(
     static WrappedComponent = WrappedComponent;
 
     render() {
-      const container = this.context as State;
+      const container = this.context as DependencyContainer;
       const diProps: any = {};
 
       Object.keys(resolutionConfig).forEach((prop) => {
