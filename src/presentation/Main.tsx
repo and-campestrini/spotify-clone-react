@@ -1,7 +1,7 @@
 import React from "react";
 import { DependencyInjectionContext } from "@/presentation/context";
 import { DependencyContainer } from "tsyringe";
-import { TestWithInjection } from "@/presentation/Test";
+import { Routes } from "@/presentation/routes";
 
 type Props = {
   dependencyContainer: DependencyContainer;
@@ -12,7 +12,7 @@ export const Main: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <DependencyInjectionContext.Provider value={dependencyContainer}>
-      <TestWithInjection />
+      <Routes />
     </DependencyInjectionContext.Provider>
   );
 };
