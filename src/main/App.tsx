@@ -4,8 +4,9 @@ import { render } from "react-dom";
 
 import { SpotifyOAuthAuthentication } from "@/data/useCases/authentication";
 import { SpotifyOAuthProvider } from "@/data/services/oauth";
+import { SpotifyAuthenticationProviderRedirect } from "@/data/useCases/authentication";
 
-import { DefaultAppConfig } from "@/infrastructure/config/DefaultAppConfig";
+import { DefaultAppConfig } from "@/infrastructure/config";
 import { FetchHttpClient } from "@/infrastructure/transport/http";
 import { SessionStorageAdapter } from "@/infrastructure/cache";
 
@@ -33,7 +34,7 @@ export class App {
       useClass: SpotifyOAuthProvider,
     });
 
-    container.register("DefaultAppConfig", {
+    container.register("AppConfig", {
       useClass: DefaultAppConfig,
     });
 
@@ -43,6 +44,10 @@ export class App {
 
     container.register("SessionStorage", {
       useClass: SessionStorageAdapter,
+    });
+
+    container.register("AuthenticationProviderRedirect", {
+      useClass: SpotifyAuthenticationProviderRedirect,
     });
   }
 }
