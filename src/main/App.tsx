@@ -11,6 +11,7 @@ import { FetchHttpClient } from "@/infrastructure/transport/http";
 import { SessionStorageAdapter } from "@/infrastructure/cache";
 
 import { Main } from "@/presentation/Main";
+import { ExternalRedirectAdapter } from "@/infrastructure/url";
 
 export class App {
   run(): void {
@@ -48,6 +49,10 @@ export class App {
 
     container.register("AuthenticationProviderRedirect", {
       useClass: SpotifyAuthenticationProviderRedirect,
+    });
+
+    container.register("ExternalRedirect", {
+      useClass: ExternalRedirectAdapter,
     });
   }
 }
