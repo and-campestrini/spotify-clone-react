@@ -10,7 +10,7 @@ const DiConfig = {
   authenticationProviderRedirect: "AuthenticationProviderRedirect",
 };
 
-const Login: React.FunctionComponent<Props> = ({
+export const Login: React.FunctionComponent<Props> = ({
   authenticationProviderRedirect,
 }) => {
   useEffect(() => {
@@ -19,4 +19,7 @@ const Login: React.FunctionComponent<Props> = ({
   return null;
 };
 
-export default withInjection<Props, typeof DiConfig>(Login, DiConfig);
+export const LoginWithInjection = withInjection<Props, typeof DiConfig>(
+  Login,
+  DiConfig
+);
