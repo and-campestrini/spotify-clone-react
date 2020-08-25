@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { withInjection } from "@/presentation/withInjection";
 import { AuthenticationProviderRedirect } from "@/domain/useCases";
+import { useUser } from "@/presentation/hooks";
 
 type Props = {
   authenticationProviderRedirect: AuthenticationProviderRedirect;
@@ -13,9 +14,14 @@ const DiConfig = {
 export const Login: React.FunctionComponent<Props> = ({
   authenticationProviderRedirect,
 }) => {
+  const currentUser = useUser();
+
   useEffect(() => {
-    window.location.assign(authenticationProviderRedirect.getRedirectUrl());
-  });
+    if (!currentUser) {
+      authenticationProviderRedirect.redirect();
+    }
+  }, [currentUser]);
+
   return null;
 };
 
