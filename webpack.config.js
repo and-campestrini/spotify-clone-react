@@ -13,8 +13,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jsx?|tsx?)$/,
-        use: "babel-loader",
+        test: /\.tsx?$/,
+        use: ["babel-loader", "ts-loader"],
       },
     ],
   },

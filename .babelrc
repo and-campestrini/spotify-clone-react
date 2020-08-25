@@ -1,37 +1,13 @@
 {
   "plugins": [
     [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
-      }
-    ],
-    [
-      "@babel/plugin-proposal-class-properties",
-      {
-        "loose": true
-      }
-    ],
-    [
       "module-resolver",
       {
         "alias": {
           "@": "./src"
         }
       }
-    ],
-    "babel-plugin-transform-typescript-metadata"
-  ],
-  "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "targets": "> 0.25%, not dead",
-        "useBuiltIns": "usage",
-        "corejs": 3
-      }
     ]
-  ]
+  ],
+  "presets": ["@babel/preset-react"]
 }
